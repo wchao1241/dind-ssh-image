@@ -25,4 +25,4 @@ if [ "$1" = 'dockerd' ]; then
 	rm -f /var/run/docker.pid
 fi
 
-exec "$@"
+exec "$@" &
