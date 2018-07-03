@@ -4,7 +4,7 @@ set -e
 # generate host keys if not present
 ssh-keygen -A
 # do not detach (-D), log to stderr (-e), passthrough other arguments
-exec /usr/sbin/sshd -D -e "$@" &
+exec /usr/sbin/sshd -D -e "$@"
 
 # no arguments passed
 # or first arg is `-f` or `--some-option`
@@ -25,4 +25,4 @@ if [ "$1" = 'dockerd' ]; then
 	rm -f /var/run/docker.pid
 fi
 
-exec "$@" &
+exec "$@"
