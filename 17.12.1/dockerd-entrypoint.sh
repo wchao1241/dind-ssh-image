@@ -4,8 +4,10 @@ set -e
 user="root"
 password=`strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 8 | tr -d '\n'`
 
+echo "======================================"
 echo ${user}:${password} | chpasswd
 echo "password: "${password}
+echo "======================================"
 # generate host keys if not present
 ssh-keygen -A
 # do not detach (-D), log to stderr (-e), passthrough other arguments
