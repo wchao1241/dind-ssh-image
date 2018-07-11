@@ -48,4 +48,4 @@ EXPOSE 2375
 EXPOSE 22
 
 ENTRYPOINT ["dockerd-entrypoint.sh"]
-#CMD ["dockerd-entrypoint.sh"]
+CMD []
