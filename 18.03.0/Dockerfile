@@ -39,7 +39,7 @@ RUN set -ex; \
 
 RUN apk add --no-cache openssh \
   && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
-  && echo "root:root" | chpasswd
+#  && echo "root:root" | chpasswd
 
 COPY dockerd-entrypoint.sh /usr/local/bin/
 
