@@ -38,8 +38,8 @@ RUN set -ex; \
 	apk del .fetch-deps
 
 RUN apk add --no-cache openssh \
-  && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
-  && echo "root:root" | chpasswd
+  && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config
+#  && echo "root:root" | chpasswd
 
 COPY dockerd-entrypoint.sh /usr/local/bin/
 
@@ -47,5 +47,5 @@ VOLUME /var/lib/docker
 EXPOSE 2375
 EXPOSE 22
 
-ENTRYPOINT ["dockerd-entrypoint.sh"]
-CMD []
+#ENTRYPOINT ["dockerd-entrypoint.sh"]
+CMD ["dockerd-entrypoint.sh"]

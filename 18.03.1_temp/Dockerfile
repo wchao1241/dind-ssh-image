@@ -1,4 +1,4 @@
-FROM docker:18.03
+FROM docker:18.03.1
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#runtime-dependencies
 RUN set -eux; \
@@ -38,8 +38,8 @@ RUN set -ex; \
 	apk del .fetch-deps
 
 RUN apk add --no-cache openssh \
-  && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config
-#  && echo "root:root" | chpasswd
+  && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
+  && echo "root:root" | chpasswd
 
 COPY dockerd-entrypoint.sh /usr/local/bin/
 
@@ -47,5 +47,5 @@ VOLUME /var/lib/docker
 EXPOSE 2375
 EXPOSE 22
 
-#ENTRYPOINT ["dockerd-entrypoint.sh"]
-CMD ["dockerd-entrypoint.sh"]
+ENTRYPOINT ["dockerd-entrypoint.sh"]
+CMD []
